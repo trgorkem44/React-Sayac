@@ -1,24 +1,22 @@
-import logo from './logo.svg';
+import { useMemo, useState } from 'react';
 import './App.css';
+import Header from './header';
 
 function App() {
+  const [number, setNumber] = useState(0);
+  const info = useMemo(()=>{
+      return {name:'bla bla'}
+  },[number])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* <Header number={number > 5 ? number : 0} info={info} /> */}
+      <Header number={number > 5 ? number : 0} info={info} />
+      <div className='box'>
+        <h1 >{number}</h1>
+        <button onClick={() => setNumber(number + 1)}>arttır</button>
+      </div>
+
+    </>
   );
 }
 
